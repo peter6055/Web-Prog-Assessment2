@@ -48,8 +48,8 @@
   text-align: center;
 }
 .content a:link, .content a:visited, .content a:hover, .content a:active {
-  color: #5A49E3 !important;
-  font-weight: 600 !important;
+  color: #5A49E3 ;
+  font-weight: 600 ;
 }
 .content input[type=memberFeeDisplayer] {
   font-size: 30px;
@@ -284,8 +284,10 @@ div#meal-right-col {
 }
 /*----- forms -----*/
 /*form require star label*/
-.content #contact-form a, .content #members-form a {
-  color: #FF0004;
+.content #contact-form a, .content #members-form-post a, .content #contact-form a:hover, .content #members-form-post a:hover, .error-msg, error-msg:hover {
+  color: #FF0004 !important;
+  box-shadow: none !important;
+  font-weight: 300 !important;
 }
 /*form label style*/
 .content .contact-label {

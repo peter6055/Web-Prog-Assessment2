@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title>Member Login | Life - Living It Fully Everyday</title>
     <?php require_once('includes/source.php'); ?>
-    <script src="assets/accounts.js"></script>
+
+    <!--call when click login btn-->
+    <?php
+    $errors = [];
+    if(isset($_POST['login'])) {
+        $errors = login($_POST);
+
+        if(count($errors) == 0) {
+            redirect('myServices.php');
+        }
+    }
+    ?>
 </head>
 
 <body>
@@ -26,29 +37,35 @@
             <div id="members-form-decoration"><img src="assets/images/account.svg" alt="LIFE"
                                                    style="padding-top: 10px;"></div>
             <div id="members-form" style="width:40%; padding-left: 100px">
-                <h1>Log in to LIFE</h1>
-                <br>
-                <form action="" method="post">
-                    <label class="contact-label" for="usrname">Username</label>
-                    <br>
-                    <input type="text" id="usrname" name="usrname" required>
-                    <br>
-                    <br>
-                    <label class="contact-label" for="pswd">Password</label>
-                    <br>
-                    <input type="password" id="pswd" name="pswd" required>
-                    <br>
-                    <br>
-                    <br>
-                    <input class="contact-submit" type="submit" value="Login" onclick="alertLoginBtnOnClick();">
-                    <br>
-                    <br>
-                    <span id="">Not have an account?&nbsp;&nbsp;<a href="register.php">Register</a></span>
+                <h1>Log in to LIFE</h1></br>
+                <form method="post" name="members-form-post">
+                    <div class="form-group">
+                        <label class="contact-label" for="email">Username (Email)</label></br>
+                        <input type="text" id="email" name="email"
+                            <?php displayValue($_POST, 'email'); ?> >
+                        <?php displayError($errors, 'email'); ?>
+
+                    </div></br>
+
+                    <div class="form-group">
+                        <label class="contact-label" for="pswd">Password</label></br>
+                        <input type="password" id="pswd" name="pswd" value=""
+                            <?php displayValue($_POST, 'pswd'); ?>
+                            <?php if(!isset($form['pswd']) || $errors['warning'] != null){echo 'value="0"';} ?> >
+                        <?php displayError($errors, 'pswd'); ?>
+                    </div></br></br>
+
+                    <button type="submit" class="contact-submit" name="login" value="login">Login</button></br></br>
+                    <?php displayError($errors, 'warning'); ?></br>
+
                 </form>
-                <br>
+                <span>Not have an account?&nbsp;&nbsp;<a href="register.php">Register</a></span>
+
             </div>
         </div>
     </div>
+
+
 
     <!--Footer Area-->
     <?php require_once('includes/footer.php'); ?>

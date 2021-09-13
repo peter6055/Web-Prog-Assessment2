@@ -4,9 +4,24 @@
                 our Cookie Policy and Privacy Policy .<br>
                 Copyright 2021 by Peter Liu . All Rights Reserved .</a>
             <h1 class="footer-head1"> Sitemap</h1>
-            <div class="link"><a href="index.php"> Home</a> <a href="service.php"> Service</a> <a href="contact.php">
-                    Contact</a> <a href="register.php"> Register</a> <a href="login.php"> Login</a> <br>
-                <a href="meal-planner.php"> Meal Planner </a></div>
+            <div class="link">
+                <a href="index.php">Home</a>
+                <a href="service.php">Service</a>
+                <a href="contact.php">Contact</a>
+                <a href="meal-planner.php"> Meal Planner </a>
+
+                <?php
+                if(getSession()==null){
+                    echo '<a href="register.php">Register</a> ';
+                    echo '<a href="login.php">Login</a> <br>';
+                } else {
+                    echo '<a href="myServices.php"> myService </a>';
+                }
+                ?>
+
+
+
+            </div>
         </div>
         <div id="right">
             <h1 class="footer-head1"> COVID - 19 resources </h1>

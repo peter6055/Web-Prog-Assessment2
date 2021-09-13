@@ -1,11 +1,20 @@
 <!--https://saturn.csit.rmit.edu.au/~s3789585/wp/a2/-->
-
+<!-- Stylesheet-->
 <link rel="stylesheet" href="assets/layout.css">
 <link rel="stylesheet" href="assets/navbar.css">
 <link rel="stylesheet" href="assets/footer.css">
 <link rel="stylesheet" href="assets/content.css">
 <link rel="stylesheet" href="assets/global-inline.css">
+<script type="text/javascript" src="includes/functions.js"></script>
 
+<!-- PHP DEBUG -->
+<?php
+    ini_set( "display_errors", 1 );
+    error_reporting( E_ALL );
+?>
+
+<!-- General PHP Functions-->
+<?php require_once('includes/functions.php'); ?>
 
 <!-- Google font API-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +28,6 @@
 
 
 <!--Bootstrap-->
-<!-- CSS only -->
-<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">-->
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 

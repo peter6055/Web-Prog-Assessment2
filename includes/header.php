@@ -5,8 +5,16 @@
         <div class="menu item"> <a href="index.php">Home</a> </div>
         <div class="menu item"> <a href="service.php">Service</a> </div>
         <div class="menu item"> <a href="contact.php">Contact us</a> </div>
-        <div class="menu item btn login"> <a href="login.php">Login</a> </div>
-        <div class="menu item btn register"> <a href="register.php">Register</a> </div>
+        <?php
+          if(getSession()==null){
+              echo '<div class="menu item btn login"> <a href="login.php">Login</a> </div>';
+              echo '<div class="menu item btn register"> <a href="register.php">Register</a> </div>';
+          } else {
+              echo '<div class="menu item btn register"> <a href="myService.php">myService Portal</a> </div>';
+          }
+        ?>
+<!--        <div class="menu item btn login"> <a href="login.php">Login</a> </div>-->
+<!--        <div class="menu item btn register"> <a href="register.php">Register</a> </div>-->
         <div class="menu item btn meal-planner"> <a href="meal-planner.php">&nbsp; &nbsp; &nbsp;Meal Planner</a> </div>
       </div>
     </div>

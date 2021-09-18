@@ -47,3 +47,35 @@ function addUser($user)
 }
 
 
+// ============== my-service ===========================================================
+// get the service icon from database
+function getServiceIconFromDatabase($requestItem){
+    // Initial connection
+    $mysqli = createConnection();
+
+    // Query
+    $result = $mysqli->query("SELECT * FROM service WHERE name='" . $requestItem . "'");
+
+    // Decompose result from array
+    $item = $result->fetch_assoc();
+
+    echo $item['image_path'];
+
+}
+
+
+// select service
+function getServiceType($requestItem){
+//    // Initial connection
+//    $mysqli = createConnection();
+//
+//    // Query
+//    $result = $mysqli->query("SELECT * FROM service WHERE name='" . $requestItem . "'");
+//
+//    // Decompose result from array
+//    $item = $result->fetch_assoc();
+//
+//    echo $item['image_path'];
+    echo "hello";
+
+}

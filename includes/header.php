@@ -10,7 +10,7 @@
               echo '<div class="menu item btn login"> <a href="login.php">Login</a> </div>';
               echo '<div class="menu item btn register"> <a href="register.php">Register</a> </div>';
           } else {
-              echo '<div class="menu item btn register"> <a href="myService.php">myService Portal</a> </div>';
+              echo '<div class="menu item btn register"> <a href="myServices.php">myService Portal</a> </div>';
           }
         ?>
 <!--        <div class="menu item btn login"> <a href="login.php">Login</a> </div>-->

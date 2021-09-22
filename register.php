@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Member Register | Life - Living It Fully Everyday</title>
-    <?php require_once('includes/source.php'); ?>
+    <?php require_once('includes/resources.php'); ?>
 
     <!--call when click join us btn-->
     <?php

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Member Login | Life - Living It Fully Everyday</title>
-    <?php require_once('includes/source.php'); ?>
+    <?php require_once('includes/resources.php'); ?>
 
     <!--call when click login btn-->
     <?php

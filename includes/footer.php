@@ -6,7 +6,7 @@
             <h1 class="footer-head1"> Sitemap</h1>
             <div class="link">
                 <a href="index.php">Home</a>
-                <a href="service.php">Service</a>
+                <a href="myServices.php">Service</a>
                 <a href="contact.php">Contact</a>
                 <a href="meal-planner.php"> Meal Planner </a>
 

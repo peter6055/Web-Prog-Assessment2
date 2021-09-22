@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home | Life - Living It Fully Everyday</title>
-    <?php require_once('includes/source.php'); ?>
+    <?php require_once('includes/resources.php'); ?>
     <link rel="stylesheet" href="assets/home.css">
 
     <!-- Slick CDN css -->
@@ -127,19 +127,19 @@
                 <h2 class="inpara-head2 inpara-container-head inpara-container-yellow-icon">&nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; Eat Healthy Planner </h2>
                 <span class="inpara-article inpara-container-article">Eating a healthy diet is very important during the COVID-19 pandemic. It can affect our body’s ability to prevent, fight and recover from infections</span>
-                <div class="inpara-container-btn" onClick="location.href='meal-planner.php'">Take a look!</div>
+                <div class="inpara-container-btn" onClick="location.href='myServices.php'">Take a look!</div>
             </div>
             <div class="yellow-container">
                 <h2 class="inpara-head2 inpara-container-head inpara-container-yellow-icon">&nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; Yoga Class</h2>
                 <span class="inpara-article inpara-container-article">Yoga Practice Is Beneficial for Maintaining Healthy Lifestyle and Endurance Under Restrictions and Stress Imposed by Lockdown During COVID-19 Pandemic.</span>
-                <div class="inpara-container-btn" onClick="location.href='services-yoga.php'">Take a look!</div>
+                <div class="inpara-container-btn" onClick="location.href='myServices.php'">Take a look!</div>
             </div>
             <div class="yellow-container">
                 <h2 class="inpara-head2 inpara-container-head inpara-container-yellow-icon">&nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; Home-based Stretching</h2>
                 <span class="inpara-article inpara-container-article">Physical activity has many health benefits, one of which is to boost the immune system and its fight against respiratory viral infections.</span>
-                <div class="inpara-container-btn" onClick="location.href='services-streching.php'">Take a look!</div>
+                <div class="inpara-container-btn" onClick="location.href='myServices.php'">Take a look!</div>
             </div>
         </div>
     </div>

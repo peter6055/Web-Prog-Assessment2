@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>LIFE Event Home-based Stretching | Life - Living It Fully Everyday</title>
-    <?php require_once('includes/source.php'); ?>
+    <?php require_once('includes/resources.php'); ?>
     <script>
         function alertEnrolled() {
             alert("Thanks. You had enrol it successfully!");

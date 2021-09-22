@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Service | Life - Living It Fully Everyday</title>
-    <?php require_once('includes/source.php'); ?>
+    <?php require_once('includes/resources.php'); ?>
+    <meta http-equiv="Refresh" content="0; URL=https://saturn.csit.rmit.edu.au/~s3789585/wp/a2/myServices.php">
+
 </head>
 
 <body>

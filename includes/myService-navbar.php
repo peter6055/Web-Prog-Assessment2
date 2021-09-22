@@ -6,7 +6,9 @@
         <li>
             <a href="myServices-1.php" class="nav-link text-white <?php if (currentPage =='myServices-1.php') echo ' active text-white'; ?>"> myService</a>
         </li>
-
+        <li>
+            <a href="myServices-hh.php" class="nav-link text-white <?php if (currentPage =='myServices-hh.php') echo ' active text-white'; ?>"> Healthy Habits</a>
+        </li>
     </ul>
     </br></br>
 </div>

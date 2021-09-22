@@ -3,7 +3,7 @@
       <div class="logo"> <img src="assets/images/LIFE-logos.jpeg" alt="LIFE logo"></div>
       <div class="menu">
         <div class="menu item"> <a href="index.php">Home</a> </div>
-        <div class="menu item"> <a href="service.php">Service</a> </div>
+        <div class="menu item"> <a href="myServices.php">Service</a> </div>
         <div class="menu item"> <a href="contact.php">Contact us</a> </div>
         <?php
           if(getSession()==null){

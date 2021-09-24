@@ -104,7 +104,7 @@ function myServiceValidation() {
                         // print reset button
                         $('#my-service-instruction').append('<h1 class="display-4">Lets start our workout</h1></br>');
                         $('#my-service-instruction').append('<button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.reload()">Restart</button></br></br>');
-                        $('#my-service-instruction').append('<video width="100%" height="auto" controls> <source src="'+response+'" type="video/mp4"> </video>');
+                        $('#my-service-instruction').append('<video width="100%" height="auto" controls> <source src="' + response + '" type="video/mp4"> </video>');
 
                     },
                     error: function (request, error) {
@@ -117,8 +117,6 @@ function myServiceValidation() {
         });
     });
 }
-
-
 
 
 function loadServiceType() {
@@ -159,10 +157,105 @@ function loadServiceType() {
 }
 
 
+function getMealPlanner(email) {
+    //Add a click listener to our search_button.
+    // $('#submit_btn').click(function () {
+
+        var total_calories = $('#cal').val().trim();
+        var type = $('[name="category"]:checked').val().trim();
+
+        // remove error message of input
+        $('#calories-error').remove();
+
+        if ($('#cal').val() && (total_calories >= 1500 && total_calories <= 5000)) {
+            // start ajax inquiries
+            $.ajax({
+                url: 'includes/api/getMealPlanner.php',
+                data: {
+                    total_calories: total_calories,
+                    type: type,
+                    email: email,
+                },
+                success: function (response) {
+                    // decode the result
+                    var result = JSON.parse(response);
+
+                    // remove the decoration and previous result first
+                    $('#meal-right-col').remove();
+                    $('#meal-right-result-col').remove();
+
+                    // redraw the UI of result container
+                    $('#page-cont').append('<div id="meal-right-result-col"> <div id="result-col-overview"> </div> <div id="result-col-breakfast"> <div class="result-col-title" id="result-col-breakfast-title"></div> </div> <div id="result-col-lunch"> <div class="result-col-title" id="result-col-lunch-title"></div> </div> <div id="result-col-dinner"> <div class="result-col-title" id="result-col-dinner-title"></div> </div> </div>');
 
 
+                    //print overview
+                    $('#result-col-overview').append('<div id="overview-cals">' + result[result.length - 1][0] + ' Calories</div>');
+                    $('#result-col-overview').append('<div id="overview-cals-remain">' + result[result.length - 1][1] + ' calories remained</div>');
 
-function getServiceID(service){
+                    //start to print meal in 3 diet
+                    for (count_diet = 0; count_diet < 3; count_diet++) {
+
+                        let diet_name = null;
+                        switch (count_diet) {
+                            case(0):
+                                diet_name = "breakfast";
+                                break;
+
+                            case(1):
+                                diet_name = "lunch";
+                                break;
+
+                            case(2):
+                                diet_name = "dinner";
+                                break;
+                        }
+
+                        // title of each diet
+                        $('#result-col-' + diet_name + '-title').append(capitalizeFirstLetter(diet_name) + ' (Total ' + result[result.length - 1][count_diet + count_diet + 2] + ' Cal/Limit ' + result[result.length - 1][count_diet + count_diet + 3] + ' Cal)');
+
+                        for (count_meal = 0; count_meal < result.length - 1; count_meal++) {
+                            if (result[count_meal][5] == count_diet) {
+
+                                // add a card container of this meal (result-col-item)
+                                $('#result-col-' + diet_name).append('<div class="result-col-item" id="result-col-item-' + count_meal + '"></div>');
+
+
+                                // add image to the card container
+                                $('#result-col-item-' + count_meal).append('<div class="result-col-image" id="result-col-image-' + count_meal + '">&nbsp;</div>');
+                                $('#result-col-image-' + count_meal).attr("style", "background-image: url(" + result[count_meal][4] + ")");
+
+
+                                // add content to the card container
+                                $('#result-col-item-' + count_meal).append('<div class="result-col-item-content" id="result-col-item-content-' + count_meal + '">&nbsp;</div>');
+
+                                $('#result-col-item-content-' + count_meal).append('<span class="result-col-item-heading">' + result[count_meal][1] + '</span>');
+                                $('#result-col-item-content-' + count_meal).append('<span class="result-col-item-article">' + result[count_meal][3] + 'Calories </span>');
+
+                            }
+
+                            if (count_meal == result.length - 2 && count_diet == 2) {
+                                $('#result-col-dinner').append('</br></br>');
+                            }
+                        }
+
+                    }
+
+                }
+            });
+        } else {
+            $('[name="meal-form"]').append('<div class="alert alert-danger mt-4 me-5" id="calories-error"> Please enter calories a day. The number must be large than 1500 and less than 2500.</div>');
+        }
+    // });
+
+}
+
+// to caps from https://www.codegrepper.com/code-examples/javascript/jquery+uppercase+first+letter
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+function getServiceID(service) {
     if (service == 'yoga') {
         return 1;
     } else if (service == 'meditation') {

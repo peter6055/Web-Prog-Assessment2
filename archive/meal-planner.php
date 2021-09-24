@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Member Login | Life - Living It Fully Everyday</title>
     <?php require_once('includes/resources.php'); ?>
-    <script type="text/javascript" src="assets/meal-plan.js"></script>
+    <script type="text/javascript" src="meal-plan.js"></script>
 </head>
 
 <body>
@@ -35,24 +35,24 @@
                     <label for="anything" id="any">Anything</label>
 
                     <input type="radio" id="paleo" name="category">
-                    <label for="paleo" style="background-image: url(assets/images/fried-chicken.svg); background-repeat: no-repeat;
+                    <label for="paleo" style="background-image: url(../assets/images/fried-chicken.svg); background-repeat: no-repeat;
 		   background-position: 18px 2px; background-size: 18px;">&nbsp; &nbsp; Paleo</label>
 
                     <input type="radio" id="vegetarian" name="category">
-                    <label for="vegetarian" style="background-image: url(assets/images/carrot.svg); background-repeat: no-repeat;
+                    <label for="vegetarian" style="background-image: url(../assets/images/carrot.svg); background-repeat: no-repeat;
 		   background-position: 18px 5px; background-size: 21px;">&nbsp; &nbsp; &nbsp; Vegetatian</label>
 
                     <input type="radio" id="vegan" name="category">
-                    <label for="vegan" style="background-image: url(assets/images/vegan.svg); background-repeat: no-repeat;
+                    <label for="vegan" style="background-image: url(../assets/images/vegan.svg); background-repeat: no-repeat;
 		   background-position: 18px 6.5px; background-size: 21px;">&nbsp; &nbsp; &nbsp; Vegan</label>
                     <br><br><br>
 
                     <input type="radio" id="keto" name="category">
-                    <label for="keto" style="background-image: url(assets/images/cookie.svg); background-repeat: no-repeat;
+                    <label for="keto" style="background-image: url(../assets/images/cookie.svg); background-repeat: no-repeat;
 		   background-position: 18px 6.5px; background-size: 21px">&nbsp; &nbsp; &nbsp; Ketogenic</label>
 
                     <input type="radio" id="medi" name="category">
-                    <label for="medi" style="background-image: url(assets/images/chocolate.svg); background-repeat: no-repeat;
+                    <label for="medi" style="background-image: url(../assets/images/chocolate.svg); background-repeat: no-repeat;
 		   background-position: 18px 4px; background-size: 19px">&nbsp; &nbsp; &nbsp; Mediterranean</label>
 
                     <br><br><br><br><br>
@@ -61,7 +61,7 @@
                 <input type="submit" id="reset_btn" value="Reset Calculation" onClick="location.reload();">
                 <br><br>
             </div>
-            <div id="meal-right-col"><img src="assets/images/meal-pana.svg" alt="LIFE"
+            <div id="meal-right-col"><img src="../assets/images/meal-pana.svg" alt="LIFE"
                                           style="padding-top: 10px; height: 300px;"></div>
             <div id="meal-right-result-col" style="display:none;">
                 <div id="result-col-overview">

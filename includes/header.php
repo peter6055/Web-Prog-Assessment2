@@ -15,7 +15,7 @@
         ?>
 <!--        <div class="menu item btn login"> <a href="login.php">Login</a> </div>-->
 <!--        <div class="menu item btn register"> <a href="register.php">Register</a> </div>-->
-        <div class="menu item btn meal-planner"> <a href="meal-planner.php">&nbsp; &nbsp; &nbsp;Meal Planner</a> </div>
+<!--        <div class="menu item btn meal-planner"> <a href="meal-planner.php">&nbsp; &nbsp; &nbsp;Meal Planner</a> </div>-->
       </div>
     </div>
 </div>

@@ -52,17 +52,15 @@ error_reporting(E_ALL);
     <!--js-->
     <script type="text/javascript" src="assets/admin.js"></script>
 
-    <!--css-->
-    <script type="text/javascript" src="assets/admin.js"></script>
 
 </head>
 
-<body class="d-flex flex-column" onload="nameSelectValidation();">
+<body class="d-flex flex-column" >
 <!-- Header -->
 <header class="p-3 bg-dark text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <a class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <img src="assets/images/LIFE-logos-white.png" alt="LIFE logo" width="100x">
             </a>
 

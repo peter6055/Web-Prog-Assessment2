@@ -1,32 +1,3 @@
-// function nameSelectValidation() {
-//     // source: https://stackoverflow.com/questions/2901125/jquery-validate-required-select
-//     $.validator.addMethod("valueNotEquals", function (value, element, arg) {
-//         return arg !== value;
-//     }, "Value must not equal arg.");
-//     // source: https://stackoverflow.com/questions/2901125/jquery-validate-required-select
-//
-//
-//     $(document).ready(function () {
-//
-//         // user select bar jquery validation
-//         $("#user-bar").validate({
-//             rules: {
-//                 user: {
-//                     valueNotEquals: "none"
-//                 }
-//             },
-//             messages: {
-//                 user: {
-//                     valueNotEquals: "You need to select a user!"
-//                 }
-//             },
-//             errorElement: "div",
-//             errorClass: 'errorMsg text-danger pt-2 ps-2',
-//         });
-//     });
-// }
-
-
 function searchServiceQuery() {
     var search = $('#search').val().trim();
     $.ajax({
@@ -61,7 +32,7 @@ function searchServiceQuery() {
                 }
 
                 // will need to empty stat when user clear search fields
-                $("#chart").remove();
+                $("#chart-c").remove();
 
             } else if (responseCode == 1){
                 printServiceBtn(responseMsg);
@@ -96,10 +67,22 @@ function printServiceBtn(responseMsg){
 function nameSelected() {
 
     // clean every thing after re-select user.
-    $("#errorMsgSearch").empty();
-    $("#service").empty();
-    $("#chart").empty();
+    // remove name selection box error msg
     $("#name-select-error-msg").remove();
+
+    // empty input search
+    $('#search').val('');
+
+    // empty search error msg
+    $("#errorMsgSearch").empty();
+
+    // empty service selection
+    $("#service").empty();
+
+    // remove diagram container
+    $("#chart-c").remove();
+
+
 
     if($("#user option:selected").val() == "none"){
         $('#user-bar').append('<p class="text-danger pt-2 ps-2" id="name-select-error-msg"> You need to select a user! </p>');
@@ -137,7 +120,7 @@ function checkedColor(actionName) {
     $('#stretching_font').attr("style", "color: #000000 !important;");
     $('#healthy-habits_btn').attr("style", "border-color: #dee2e6 !important;");
     $('#healthy-habits_font').attr("style", "color: #000000 !important;");
-    $('#chart').remove();
+    $('#chart-c').remove();
 
 
     if (actionName == "yoga") {
@@ -166,20 +149,23 @@ function checkedColor(actionName) {
     var user_email = $('[name="user"]').val();
 
     // empty the diagram container
-    $('#after-selected-name').append('<div class="row border p-4 m-1" id="chart"></div>');
+    $('#after-selected-name').append('<div class="row border p-4 m-1 d-flex justify-content-center" id="chart-c"> <div class="w-75" id="chart"></div></div>');
 
     // check which diagram should print
     if (actionName == "yoga" || actionName == "meditation" || actionName == "stretching") {
         // first title and diagram
-        $('#chart').append('<h3 class="pt-5">What type of service user has enrolled?</h3>');
+        $('#chart').append('<h3 class="pt-5">How many times of ' +actionName+ ' service did user participate?</h3>');
+        $('#chart').append('<div class="pt-3" id="service_type_bar_chart_error"></div>');
         $('#chart').append('<div class="pt-4" id="service_type_bar_chart_container"> <canvas id="service_type_bar_chart"></canvas> </div>');
 
         // second title and diagram
-        $('#chart').append('<h3 class="pt-5">How long did the user participate in this service? (Mins) </h3>');
+        $('#chart').append('<h3 class="pt-5">How long did the user participate in ' +actionName+ ' ? (Mins) </h3>');
+        $('#chart').append('<div class="pt-3" id="service_duration_bar_chart_error"></div>');
         $('#chart').append('<div class="pt-4" id="service_duration_bar_chart_container"> <canvas id="service_duration_bar_chart"></canvas> </div>');
 
         // third title and diagram
-        $('#chart').append('<h3 class="pt-5">When did the user use the services?</h3>');
+        $('#chart').append('<h3 class="pt-5">When did the user participate on ' +actionName+ ' in each month?</h3>');
+        $('#chart').append('<div class="pt-3" id="service_time_line_graph_error"></div>');
         $('#chart').append('<div class="pt-4" id="service_time_line_graph_container"> <canvas id="service_time_line_graph"></canvas> </div>');
         
         
@@ -220,34 +206,44 @@ function checkedColor(actionName) {
             success: function (response) {
                 var result = JSON.parse(response);
 
-                // data y
-                const service_type_bar_chartData = {
-                    labels: result[1],
-                    datasets: [{
-                        label: 'What type of ' +actionName+ ' user has enrolled?',
-                        backgroundColor: backgroundColor,
-                        borderColor: borderColor,
-                        borderWidth: 1 ,
-                        data: result[0],
-                    }]
-                };
+                // detect is there data or not
+                if(!$.trim(result)){
+                    // no data
+                    $('#service_type_bar_chart_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
 
-                const service_type_bar_chartConfig = {
-                    type: 'bar',
-                    data: service_type_bar_chartData,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                } else {
+                    // have data
+                    // data y
+                    const service_type_bar_chartData = {
+                        labels: result[1],
+                        datasets: [{
+                            label: 'What type of ' +actionName+ ' user has enrolled?',
+                            backgroundColor: backgroundColor,
+                            borderColor: borderColor,
+                            borderWidth: 1 ,
+                            data: result[0],
+                        }]
+                    };
+
+                    const service_type_bar_chartConfig = {
+                        type: 'bar',
+                        data: service_type_bar_chartData,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
-                        }
-                    },
-                };
+                        },
+                    };
 
-                var service_type_bar_chart = new Chart(
-                    document.getElementById('service_type_bar_chart'),
-                    service_type_bar_chartConfig
-                );
+                    var service_type_bar_chart = new Chart(
+                        document.getElementById('service_type_bar_chart'),
+                        service_type_bar_chartConfig
+                    );
+                }
+
+
 
             },
             error: function (request, error) {
@@ -269,34 +265,44 @@ function checkedColor(actionName) {
             success: function (response) {
                 var result = JSON.parse(response);
 
-                // data y
-                const service_type_bar_chartData = {
-                    labels: result[1],
-                    datasets: [{
-                        label: 'How long did the user participate in ' +actionName+ '? (Mins)',
-                        backgroundColor: backgroundColor,
-                        borderColor: borderColor,
-                        borderWidth: 1 ,
-                        data: result[0],
-                    }]
-                };
+                // detect is there data or not
+                if(!$.trim(result)){
+                    // no data
+                    $('#service_duration_bar_chart_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
 
-                const service_duration_bar_chartConfig = {
-                    type: 'bar',
-                    data: service_type_bar_chartData,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                } else {
+                    // have data
+                    // data y
+                    const service_type_bar_chartData = {
+                        labels: result[1],
+                        datasets: [{
+                            label: 'How long did the user participate in ' +actionName+ '? (Mins)',
+                            backgroundColor: backgroundColor,
+                            borderColor: borderColor,
+                            borderWidth: 1 ,
+                            data: result[0],
+                        }]
+                    };
+
+                    const service_duration_bar_chartConfig = {
+                        type: 'bar',
+                        data: service_type_bar_chartData,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
-                        }
-                    },
-                };
+                        },
+                    };
 
-                var service_type_bar_chart = new Chart(
-                    document.getElementById('service_duration_bar_chart'),
-                    service_duration_bar_chartConfig
-                );
+                    var service_type_bar_chart = new Chart(
+                        document.getElementById('service_duration_bar_chart'),
+                        service_duration_bar_chartConfig
+                    );
+                }
+
+
 
             },
             error: function (request, error) {
@@ -305,41 +311,127 @@ function checkedColor(actionName) {
         });
 
 
-    //     // ---------------------------- third diagram config (service_time_line_graph) ----------------------------
-        const service_time_line_graphConfig = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June',],
-            type: 'line',
-            data: data,
-            options: {
-                responsive : true
+        // ---------------------------- third diagram config (service_time_line_graph) ----------------------------
+        $.ajax({
+            url: 'includes/api/getChartData.php',
+            data: {
+                user_email: user_email,
+                service_name: actionName,
+                chart_name: "service_time_line_graph",
+            },
+
+            success: function (response) {
+                var result = JSON.parse(response);
+
+                // detect is there data or not
+                if(!$.trim(result)){
+                    // no data
+                    $('#service_time_line_graph_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
+
+                } else {
+                    // have data
+                    // data y
+                    const service_time_line_chartData= {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                        datasets: [{
+                            label: 'When did the user participate on ' +actionName+ ' in each month?',
+                            data: result,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1,
+                        }]
+                    };
+
+                    const service_time_line_graphConfig = {
+                        type: 'line',
+                        data: service_time_line_chartData,
+                        options: {
+                            responsive : true
+                        }
+                    };
+
+                    var service_type_bar_chart = new Chart(
+                        document.getElementById('service_time_line_graph'),
+                        service_time_line_graphConfig
+                    );
+                }
+
+            },
+            error: function (request, error) {
+                alert("System Error! Please try again");
             }
-        };
-
-        var service_type_bar_chart = new Chart(
-            document.getElementById('service_time_line_graph'),
-            service_time_line_graphConfig
-        );
+        });
 
 
-    // } else if (actionName == "healthy-habits") {
-    //     // first title and diagram
-    //     $('#chart').append('<h3 class="pt-5">How many calories serving in a day?</h3>');
-    //     $('#chart').append('<div class="pt-4" id="serving_per_diet_pie_chart_container"> <canvas id="serving_per_diet_pie_chart"></canvas> </div>');
-    //
-    //     // ---------------------------- first diagram config ----------------------------
-    //     const serving_per_diet_pie_chartConfig = {
-    //         type: 'pie',
-    //         data: data,
-    //         options: {
-    //             responsive : true
-    //         }
-    //     };
-    //
-    //
-    //     var service_type_bar_chart = new Chart(
-    //         document.getElementById('serving_per_diet_pie_chart'),
-    //         serving_per_diet_pie_chartConfig
-    //     );
+
+    } else if (actionName == "healthy-habits") {
+        // first title and diagram
+        $('#chart').append('<h3 class="pt-5">How many kilojoules on each diet in a day?</h3>');
+        $('#chart').append('<div class="pt-3" id="kilojoules_per_diet_pie_chart_error"></div>');
+        $('#chart').append('<div class="pt-4 d-flex justify-content-center" id="kilojoules_per_diet_pie_chart_container"> <canvas class="mx-auto" id="kilojoules_per_diet_pie_chart"></canvas> </div>');
+
+        // ---------------------------- first diagram config ----------------------------
+
+        $.ajax({
+            url: 'includes/api/getChartData.php',
+            data: {
+                user_email: user_email,
+                service_name: actionName,
+                chart_name: "kilojoules_per_diet_pie_chart",
+            },
+
+            success: function (response) {
+
+                var result = JSON.parse(response);
+
+                // detect is there data or not
+                if(!$.trim(result)){
+                    // no data
+                    $('#kilojoules_per_diet_pie_chart_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
+
+                } else {
+                    // have data
+                    const kilojoules_per_diet_pie_chartData = {
+                        labels: [
+                            'Breakfast',
+                            'Lunch',
+                            'Dinner'
+                        ],
+                        datasets: [{
+                            label: 'How many kilojoules on each diet in a day?',
+                            data: result,
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    };
+
+
+                    const kilojoules_per_diet_pie_chartConfig = {
+                        type: 'pie',
+                        data: kilojoules_per_diet_pie_chartData,
+                        options: {
+                            responsive : true,
+                        }
+                    };
+
+
+                    var service_type_bar_chart = new Chart(
+                        document.getElementById('kilojoules_per_diet_pie_chart'),
+                        kilojoules_per_diet_pie_chartConfig
+                    );
+                }
+
+            },
+            error: function (request, error) {
+                alert("System Error! Please try again");
+            }
+        });
+
+
 
     }
 

@@ -1,8 +1,10 @@
 <?php
 include_once "api-header.php";
 
-$total_calories = $_GET['calories'];
+$total_calories = $_GET['total_calories'];
 $type = $_GET['type'];
+$email = $_GET['email'];
+
 // ------------------------------------ Initialize storage --------------------------------------
 //for meal that is selected (will be return back)
 $array_meal = array();
@@ -10,6 +12,11 @@ $array_meal_length = 0;
 
 // array to store calories for each diet
 $diet_calories = array();
+
+// total calories per meal without deduction
+$diet_calories_no_deduction = array();
+
+
 
 // array to store calories remain for each diet when calculating
 //$diet_remaining_calories = array();
@@ -27,9 +34,22 @@ $diet_calories[0] = $total_calories * 0.3;
 $diet_calories[1] = $total_calories * 0.5;
 $diet_calories[2] = $total_calories * 0.2;
 
+$diet_calories_no_deduction[0] = $total_calories * 0.3;
+$diet_calories_no_deduction[1] = $total_calories * 0.5;
+$diet_calories_no_deduction[2] = $total_calories * 0.2;
+
+
 // ----------------------- Get all the data from DB and store it into a local array -----------------------------
 // get all the query back.
-$data = $mysqli->query("SELECT * FROM `meal` WHERE `type` = '" . $type . "'");
+
+if(strcasecmp($type, "Anything") == 0){
+    // when user accept anything
+    $data = $mysqli->query("SELECT * FROM `meal`");
+} else {
+    // when meal is limited by type
+    $data = $mysqli->query("SELECT * FROM `meal` WHERE `type` = '" . $type . "'");
+
+}
 
 
 // decode data and put the meal in local 2d array
@@ -87,15 +107,11 @@ for ($dietCount = 0; $dietCount < 3; $dietCount++) {
             // add a parameter of diet
             $array_meal[$array_meal_length][5] = $dietCount;
 
-//            echo json_encode($array_meal[$array_meal_length]);
-
             // minus remain cal
             $diet_calories[$dietCount] = $diet_calories[$dietCount] - intval($array_meal[$array_meal_length][3]);
 
             // increase returned data length
             $array_meal_length++;
-
-
         }
 
 
@@ -106,53 +122,47 @@ for ($dietCount = 0; $dietCount < 3; $dietCount++) {
             $countArray = 0;
         }
     }
+}
+// ----------------------- Start to find suitable meal for each diet  -----------------------------
 
+
+
+// ------------------------------------- Store in database  ---------------------------------------
+
+
+$mysqli->query("DELETE FROM `user_meal` WHERE email = '".$email."'");
+
+
+for($countMeal=0 ; $countMeal < $array_meal_length; $countMeal++){
+    $mysqli->query("INSERT INTO `user_meal` (`email`, `meal_id`, `servings`, `diet`) VALUES ('".$email."', '".$array_meal[$countMeal][0]."', '1', '".$array_meal[$countMeal][5]."')");
 }
 
+
+// ---------------- Calculate the info of meal and pass it back for display  -----------------------------
+// The last place of array use for info transfer
+// Sequence: Total food cal, Remain food cal, Break total, Break remain, Lunch total, Lunch remain, Dinner total, Dinner remain
+$total_calories_meal = 0;
+
+for($dietCount = 0; $dietCount < 3; $dietCount++){
+
+    $total_calories_meal+= $diet_calories_no_deduction[$dietCount] - $diet_calories[$dietCount];
+
+    //total cal per diet
+    $array_meal[$array_meal_length][$dietCount+$dietCount+2] = $diet_calories_no_deduction[$dietCount] - $diet_calories[$dietCount];
+
+    //remain cal per diet
+    $array_meal[$array_meal_length][$dietCount+$dietCount+3] = $diet_calories[$dietCount];
+
+}
+// put remain food cal in the first place, the previous will be push to second place
+array_unshift($array_meal[$array_meal_length],($total_calories - $total_calories_meal));
+
+// put total food cal in the first place, remain cal will be push back to second place
+array_unshift($array_meal[$array_meal_length],$total_calories_meal);
+// ---------------- This part is to calculate the info of meal and pass it back for display  -----------------------------
+
+
 echo json_encode($array_meal);
-
-
-// enter array starting from the $random
-// check is it repeat before
-// minus remain cal
-
-
-//    // put the meal in each diet to the diet array
-//    while() {
-//        $array_meal[] = array_values($data_fetched);
-//    }
-//
-//    // put the meal of each diet to the meal array
-//    $array_diet[] = array_values($array_meal);
-
-//echo $array_meal_local[0][5];
-//echo $array_meal_local_length;
-
-
-//echo json_encode($array_meal);
-
-
-
-
-// ------ Debug display -------
-//        echo "<table border='1'>";
-//        echo "<tr> <th>meal_id</th> <th>name</th> <th>type</th> <th>kilojoules</th> <th>image_path</th></tr>";
-//        while($data_fetched1 = $data->fetch_assoc()) {
-//            // Print out the contents of each row into a table
-//            echo "<tr><td>";
-//            echo $data_fetched1['meal_id'];
-//            echo "</td><td>";
-//            echo $data_fetched1['name'];
-//            echo "</td><td>";
-//            echo $data_fetched1['type'];
-//            echo "</td><td>";
-//            echo $data_fetched1['kilojoules'];
-//            echo "</td><td>";
-//            echo $data_fetched1['image_path'];
-//            echo "</td></tr>";
-//        }
-// ------ Debug display -------
-
 
 
 

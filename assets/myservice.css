@@ -3,6 +3,10 @@
     padding-top: 5px;
 }
 
+[name='meal-form']{
+    position: fixed;
+    width: 40%;
+}
 
 #meal-left-col {
     /*background: url("images/meal-bg1.svg");*/
@@ -81,18 +85,12 @@
     text-align: left;
     background: url("images/arrow-right.svg");
     background-repeat: no-repeat;
-    background-position: 295px 7px;
+    background-position: 255px 5px;
     font-weight: 900;
     font-family: "Lato", sans-serif !important;
     border: none;
 }
-/* hide the reset button for default*/
-#meal-left-col #reset_btn {
-    display: none;
-    background: url("images/refresh-cw.svg");
-    background-repeat: no-repeat;
-    background-position: 310px 18px;
-}
+
 #meal-left-col a:hover {
     color: #000000 !important;
     font-weight: 300 !important;
@@ -112,9 +110,9 @@ div#meal-right-col {
 #result-col-overview {
     background: url("images/result_bg.svg") #A259FF;
     width: 407px;
-    height: 205px;
+    height: 160px;
     border-radius: 27px;
-    margin: 36px 30px 0px 0px;
+    margin: 18px 30px 0px 0px;
 }
 /*Overview total calories*/
 #overview-cals {
@@ -191,6 +189,31 @@ div#meal-right-col {
     color: #3D3D3D;
 }
 .result-col-item-content {
-    padding-top: 15px;
+    /*padding-top: 15px;*/
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
+.full-height{
+    height: 100%;
+}
+
+.pad-l-300{
+    padding-left: 265px;
+}
+
+.pad-t-85{
+    padding-top: 85px;
+}
+
+.po-fixed{
+    position: fixed;
+}
+
+.z-index-max{
+    z-index: 999999;
+    background-color: white;
+}
+
+

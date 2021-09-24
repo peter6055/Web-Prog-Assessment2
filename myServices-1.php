@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="full-height">
 <head>
     <meta charset="UTF-8">
     <title>Member | Life - Living It Fully Everyday</title>
@@ -7,21 +7,21 @@
     <?php require_once('includes/myService-resources.php'); ?>
 </head>
 
-<body class="d-flex flex-column" onload="myServiceValidation(); loadServiceType();">
+<body class="d-flex flex-column full-height" onload="myServiceValidation(); loadServiceType();">
 
 <?php require_once('includes/myService-header.php'); ?>
 
-<div class="d-flex justify-content-start align-items-stretch">
+<div class="d-flex justify-content-start align-items-stretch pad-t-85">
 
     <?php require_once('includes/myService-navbar.php'); ?>
 
-    <div class="container"></br></br>
+    <div class="container pad-l-300"></br></br>
 
         <!-- Greeting -->
         <?php echo '<h2 class="text-center"> Welcome ' . ($_SESSION[USER_SESSION_KEY])['first_name'] . '!</h2>' ?>
         <p class="lead text-center">Please select a service.</p>
 
-        <div class="container vh-100"></br>
+        <div class="container"></br>
             <form name="my-service-selection" id="my-service-selection" onsubmit="return false">
                 <!--Service List -->
                 <div class="row align-items-start align-items-stretch" id="service">

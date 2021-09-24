@@ -1,20 +1,20 @@
 <!doctype html>
-<html>
+<html class="full-height">
 <head>
     <meta charset="UTF-8">
     <title>Member | Life - Living It Fully Everyday</title>
     <?php require_once('includes/resources.php'); ?>
     <?php require_once('includes/myService-resources.php'); ?>
 </head>
-<body  class="d-flex flex-column">
+<body class="d-flex flex-column full-height">
 
 <?php require_once('includes/myService-header.php'); ?>
 
-<div class="d-flex justify-content-start align-items-stretch">
+<div class="d-flex justify-content-start align-items-stretch full-height pad-t-85">
 
     <?php require_once('includes/myService-navbar.php'); ?>
 
-    <div class="container vh-100"></br>
+    <div class="container pad-l-300"></br>
         <div class="alert alert-warning" role="alert">
             Due to scheduled system maintenance, some of our service will be temporarily unavailable.
         </div>

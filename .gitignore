@@ -2,4 +2,5 @@
 .DS_Store
 /test/
 /.idea/
-/sandbox/
+/archive/sandbox/
+/archive/

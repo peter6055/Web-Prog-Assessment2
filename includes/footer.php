@@ -8,7 +8,7 @@
                 <a href="index.php">Home</a>
                 <a href="myServices.php">Service</a>
                 <a href="contact.php">Contact</a>
-                <a href="meal-planner.php"> Meal Planner </a>
+<!--                <a href="meal-planner.php"> Meal Planner </a>-->
 
                 <?php
                 if(getSession()==null){

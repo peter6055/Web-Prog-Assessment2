@@ -39,9 +39,9 @@
 
             <!-- An activity -->
             <div class="activity">
-                <div class="cover" style="background-image: url(assets/images/act01.jpg);"></div>
+                <div class="cover" style="background-image: url(../assets/images/act01.jpg);"></div>
                 <h1 class="title">Eat Healthy Planner</h1>
-                <span class="status" style="background-image: url(assets/images/status-on.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Ongoing</span><br><br>
+                <span class="status" style="background-image: url(../assets/images/status-on.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Ongoing</span><br><br>
 
                 <h2 class="sub-title">Who can join us?</h2>
                 <span class="article">This is a calculaor in LIFE website. Everyone can access it!&nbsp; &nbsp;</span>
@@ -56,9 +56,9 @@
 
             <!-- An activity -->
             <div class="activity">
-                <div class="cover" style="background-image: url(assets/images/act02.jpg);"></div>
+                <div class="cover" style="background-image: url(../assets/images/act02.jpg);"></div>
                 <h1 class="title">Online Morning Yoga Class</h1>
-                <span class="status" style="background-image: url(assets/images/status-readytoclose.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Almost Full&nbsp;</span><br><br>
+                <span class="status" style="background-image: url(../assets/images/status-readytoclose.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Almost Full&nbsp;</span><br><br>
 
                 <h2 class="sub-title">Who can join us?</h2>
                 <span class="article">Everyone, This is an online session and it will be delivery by zoom.</span>
@@ -73,9 +73,9 @@
 
             <!-- An activity -->
             <div class="activity">
-                <div class="cover" style="background-image: url(assets/images/act03.jpg);"></div>
+                <div class="cover" style="background-image: url(../assets/images/act03.jpg);"></div>
                 <h1 class="title">Meditaion @ LIFE.COM&nbsp;&nbsp;</h1>
-                <span class="status" style="background-image: url(assets/images/status-closed.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Closed</span><br><br>
+                <span class="status" style="background-image: url(../assets/images/status-closed.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Closed</span><br><br>
 
                 <h2 class="sub-title">Who can join us?</h2>
                 <span class="article">Everyone, This is an online session and it will be delivery by zoom.</span>
@@ -98,9 +98,9 @@
 
             <!-- An activity -->
             <div class="activity">
-                <div class="cover" style="background-image: url(assets/images/act04.jpg);"></div>
+                <div class="cover" style="background-image: url(../assets/images/act04.jpg);"></div>
                 <h1 class="title">Home-based Stretching</h1>
-                <span class="status" style="background-image: url(assets/images/status-on.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Ongoing</span><br><br>
+                <span class="status" style="background-image: url(../assets/images/status-on.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Ongoing</span><br><br>
 
                 <h2 class="sub-title">Who can join us?</h2>
                 <span class="article">Everyone, This is an online session and it will be delivery by zoom.</span>
@@ -115,9 +115,9 @@
 
             <!-- An activity -->
             <div class="activity">
-                <div class="cover" style="background-image: url(assets/images/act05.jpg);"></div>
+                <div class="cover" style="background-image: url(../assets/images/act05.jpg);"></div>
                 <h1 class="title">Live Streaming: How's your healthy habits?</h1>
-                <span class="status" style="background-image: url(assets/images/status-readytoclose.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Almost Full&nbsp;</span><br><br>
+                <span class="status" style="background-image: url(../assets/images/status-readytoclose.svg);">&nbsp; &nbsp; &nbsp; &nbsp; Almost Full&nbsp;</span><br><br>
 
                 <h2 class="sub-title">Who can join us?</h2>
                 <span class="article">Everyone, This is an online session and it will be delivery by zoom.</span>

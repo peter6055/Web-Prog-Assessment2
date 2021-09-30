@@ -52,7 +52,8 @@
                     </br></br>
                     <input type="submit" id="submit_btn" value="Generate Meal" onclick="getMealPlanner('<?php echo ($_SESSION[USER_SESSION_KEY])['email']?>')">
                     </br></br>
-                    <div class="alert alert-success me-5" role="alert">Your latest meal plan will  save on our system automatically!</div>
+
+                    <div class="alert alert-success me-5" role="alert">Your latest meal plan will save on our system automatically!</div>
 
                 </form>
 
@@ -61,9 +62,8 @@
 
             <div id="meal-right-col">
                 <img src="assets/images/meal-pana.svg" alt="LIFE" style="padding-top: 10px; height: 250px;">
+                <div class="alert alert-info mx-5 mt-5" role="alert">Gain weight? I will generate a meal plan for you base on the calories you will like to eat in a day. Also, we offer several option on meal type, you can select a specific one or random (anything). <strong>Please note, the calculation is round up to first whole number, there might be ± 1 of uncertainty.</strong></div>
             </div>
-
-
         </div></br></br>
     </div>
 </div>

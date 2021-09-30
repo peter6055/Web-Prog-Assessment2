@@ -2,8 +2,7 @@
 
 
 // Make DB connection.
-function createConnection()
-{
+function createConnection(){
     // Setup db connection
     $mysqli = new mysqli("www.databaseaustralia.com", "s3789585_a2", "Peter0466555592_phpmyadmin", "s3789585_a2");
 
@@ -16,8 +15,7 @@ function createConnection()
 
 
 // Get user detail
-function getUser($email)
-{
+function getUser($email){
     // Initial connection
     $mysqli = createConnection();
 

@@ -34,7 +34,7 @@
     <!--Main Content Area-->
     <div class="content">
         <div class="content-container">
-            <div id="members-form-decoration"><img src="assets/images/account.svg" alt="LIFE"
+            <div id="members-form-decoration"><img src="assets/images/account.svg" alt="Hi, we are life. Life is a COVID-19 anti-stress platform. Join us today."
                                                    style="padding-top: 10px;"></div>
             <div id="members-form" style="width:40%; padding-left: 100px">
                 <h1>Log in to LIFE</h1></br>

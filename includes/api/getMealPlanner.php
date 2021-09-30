@@ -30,13 +30,13 @@ $array_meal_local_length = 0;
 
 // Calculate the amount of calories per diet
 // 0:breakfast / 1:lunch / 2:dinner
-$diet_calories[0] = $total_calories * 0.3;
-$diet_calories[1] = $total_calories * 0.5;
-$diet_calories[2] = $total_calories * 0.2;
+$diet_calories[0] = round($total_calories * 0.3);
+$diet_calories[1] = round($total_calories * 0.5);
+$diet_calories[2] = round($total_calories * 0.2);
 
-$diet_calories_no_deduction[0] = $total_calories * 0.3;
-$diet_calories_no_deduction[1] = $total_calories * 0.5;
-$diet_calories_no_deduction[2] = $total_calories * 0.2;
+$diet_calories_no_deduction[0] = round($total_calories * 0.3);
+$diet_calories_no_deduction[1] = round($total_calories * 0.5);
+$diet_calories_no_deduction[2] = round($total_calories * 0.2);
 
 
 // ----------------------- Get all the data from DB and store it into a local array -----------------------------

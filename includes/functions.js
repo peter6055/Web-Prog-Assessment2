@@ -10,7 +10,7 @@ function registerMemberFeeCal() {
     var emp_status_yes = document.forms["register-form"]["emp_yes"].checked;
     var emp_status_no = document.forms["register-form"]["emp_no"].checked;
 
-    //set up a unchangable original fee and discount rate counter
+    //set up a unchangeable original fee and discount rate counter
     var rate = 10.00;
     var discountPercantage = 0.00;
 
@@ -34,9 +34,11 @@ function registerMemberFeeCal() {
         rate = rate * (1.00-discountPercantage);
     }
 
+    rate=rate*12
+
     //update the rate to UI/return is for server side needed in future
     document.getElementById('memberFee_value').value = "AUD " + rate;
-    return rate;
+    return rate*12;
 }
 
 

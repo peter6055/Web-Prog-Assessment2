@@ -211,7 +211,7 @@ function getMealPlanner(email) {
                         }
 
                         // title of each diet
-                        $('#result-col-' + diet_name + '-title').append(capitalizeFirstLetter(diet_name) + ' (Total ' + result[result.length - 1][count_diet + count_diet + 2] + ' Cal/Limit ' + result[result.length - 1][count_diet + count_diet + 3] + ' Cal)');
+                        $('#result-col-' + diet_name + '-title').append(capitalizeFirstLetter(diet_name) + ' (Total ' + result[result.length - 1][count_diet + count_diet + 2] + ' Cal/Remains ' + result[result.length - 1][count_diet + count_diet + 3] + ' Cal)');
 
                         for (count_meal = 0; count_meal < result.length - 1; count_meal++) {
                             if (result[count_meal][5] == count_diet) {
@@ -243,7 +243,7 @@ function getMealPlanner(email) {
                 }
             });
         } else {
-            $('[name="meal-form"]').append('<div class="alert alert-danger mt-4 me-5" id="calories-error"> Please enter calories a day. The number must be large than 1500 and less than 2500.</div>');
+            $('[name="meal-form"]').append('<div class="alert alert-danger mt-4 me-5" id="calories-error"> Please enter calories a day. The number must between 1500 and 5000 calories.</div>');
         }
     // });
 

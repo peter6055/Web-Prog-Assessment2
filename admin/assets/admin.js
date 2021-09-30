@@ -366,9 +366,9 @@ function checkedColor(actionName) {
 
     } else if (actionName == "healthy-habits") {
         // first title and diagram
-        $('#chart').append('<h3 class="pt-5">How many kilojoules on each diet in a day?</h3>');
-        $('#chart').append('<div class="pt-3" id="kilojoules_per_diet_pie_chart_error"></div>');
-        $('#chart').append('<div class="pt-4 d-flex justify-content-center" id="kilojoules_per_diet_pie_chart_container"> <canvas class="mx-auto" id="kilojoules_per_diet_pie_chart"></canvas> </div>');
+        $('#chart').append('<h3 class="pt-5">How many calories on each diet in a day?</h3>');
+        $('#chart').append('<div class="pt-3" id="calories_per_diet_pie_chart_error"></div>');
+        $('#chart').append('<div class="pt-4 d-flex justify-content-center" id="calories_per_diet_pie_chart_container"> <canvas class="mx-auto" id="calories_per_diet_pie_chart"></canvas> </div>');
 
         // ---------------------------- first diagram config ----------------------------
 
@@ -377,7 +377,7 @@ function checkedColor(actionName) {
             data: {
                 user_email: user_email,
                 service_name: actionName,
-                chart_name: "kilojoules_per_diet_pie_chart",
+                chart_name: "calories_per_diet_pie_chart",
             },
 
             success: function (response) {
@@ -387,18 +387,18 @@ function checkedColor(actionName) {
                 // detect is there data or not
                 if(!$.trim(result)){
                     // no data
-                    $('#kilojoules_per_diet_pie_chart_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
+                    $('#calories_per_diet_pie_chart_error').append('<div class="alert alert-info" role="alert">The user ' +user_email+' did not have enough data to draw this diagram.</div>');
 
                 } else {
                     // have data
-                    const kilojoules_per_diet_pie_chartData = {
+                    const calories_per_diet_pie_chartData = {
                         labels: [
                             'Breakfast',
                             'Lunch',
                             'Dinner'
                         ],
                         datasets: [{
-                            label: 'How many kilojoules on each diet in a day?',
+                            label: 'How many calories on each diet in a day?',
                             data: result,
                             backgroundColor: [
                                 'rgb(255, 99, 132)',
@@ -410,9 +410,9 @@ function checkedColor(actionName) {
                     };
 
 
-                    const kilojoules_per_diet_pie_chartConfig = {
+                    const calories_per_diet_pie_chartConfig = {
                         type: 'pie',
-                        data: kilojoules_per_diet_pie_chartData,
+                        data: calories_per_diet_pie_chartData,
                         options: {
                             responsive : true,
                         }
@@ -420,8 +420,8 @@ function checkedColor(actionName) {
 
 
                     var service_type_bar_chart = new Chart(
-                        document.getElementById('kilojoules_per_diet_pie_chart'),
-                        kilojoules_per_diet_pie_chartConfig
+                        document.getElementById('calories_per_diet_pie_chart'),
+                        calories_per_diet_pie_chartConfig
                     );
                 }
 

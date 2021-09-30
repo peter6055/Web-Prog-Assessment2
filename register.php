@@ -34,7 +34,7 @@
     <!--Main Content Area-->
     <div class="content">
         <div class="content-container">
-            <div id="members-form-decoration"><img src="assets/images/account.svg" alt="LIFE"
+            <div id="members-form-decoration"><img src="assets/images/account.svg" alt="Hi, we are life. Life is a COVID-19 anti-stress platform. Join us today."
                                                    style="padding-top: 10px;"> <span>Already have an account?&nbsp;&nbsp;<a
                     href="login.php">Login in</a></span></div>
             <div id="members-form"  style="width:40%; padding-left: 100px">
@@ -153,7 +153,7 @@
 
 
                     <label class="contact-label" for="memberFeeDisplayer">Annual Membership Fees</label></br>
-                    <input type="memberFeeDisplayer" id="memberFee_value" value="AUD 10" readonly></br></br></br>
+                    <input type="memberFeeDisplayer" id="memberFee_value" value="AUD 120" readonly></br></br></br>
                     <button type="submit" class="contact-submit" name="join-us" value="join-us">Join us!</button>
                 </form></br>
             </div>

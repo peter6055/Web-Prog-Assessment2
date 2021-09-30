@@ -7,13 +7,12 @@
 <link rel="stylesheet" href="assets/global-inline.css">
 <script type="text/javascript" src="includes/functions.js"></script>
 
-<!-- PHP DEBUG -->
+<!-- PHP DEBUG-->
 <?php
-    ini_set( "display_errors", 1 );
-    error_reporting( E_ALL );
+//    ini_set( "display_errors", 1 );
+//    error_reporting( E_ALL );
 ?>
 
-<!-- General PHP Functions-->
 <?php require_once('includes/functions.php'); ?>
 
 <!-- Google font API-->
